@@ -83,7 +83,7 @@ footer{max-width:1100px;margin:auto;padding:24px 16px;color:var(--mute);font-siz
 const $=s=>document.querySelector(s);
 const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* FIREBASE: paste your own web app config here (Firebase console > Project settings). While apiKey says YOUR_API_KEY the site runs in demo mode. */
-const const FB_CONFIG={apiKey:'AIzaSyAoCHh4MpXvF51TexK5U7PB7wUtzHP3GFE',authDomain:'lugha-c50d6.firebaseapp.com',projectId:'lugha-c50d6',appId:'1:496321113635:web:ec02384bffa7aeb37e0b96'};
+const FB_CONFIG={apiKey:'AIzaSyAoCHh4MpXvF51TexK5U7PB7wUtzHP3GFE',authDomain:'lugha-c50d6.firebaseapp.com',projectId:'lugha-c50d6',appId:'1:496321113635:web:ec02384bffa7aeb37e0b96'};
 let fbAuth=null;try{if(window.firebase&&FB_CONFIG.apiKey!=='YOUR_API_KEY'){firebase.initializeApp(FB_CONFIG);fbAuth=firebase.auth()}}catch(e){}
 const KEY='lugha_v2',FEE=.15;
 const mpesa=(n,a,ph,ts)=>{const d=new Date(ts),c=Array.from({length:10},(_,i)=>i?'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.random()*32|0]:'Q').join('');return{code:c,msg:`${c} Confirmed. Ksh${a.toLocaleString()}.00 sent to ${n.toUpperCase()} ${ph.slice(0,4)}***${ph.slice(-3)} on ${d.toLocaleDateString('en-GB')} at ${d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})}. Paid by Lugha for your lessons.`}};
