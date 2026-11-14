@@ -94,7 +94,7 @@ const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;
 /* FIREBASE: paste your own web app config here (Firebase console > Project settings). While apiKey says YOUR_API_KEY the site runs in demo mode. */
 const FB_CONFIG={apiKey:'AIzaSyAoCHh4MpXvF51TexK5U7PB7wUtzHP3GFE',authDomain:'lugha-c50d6.firebaseapp.com',projectId:'lugha-c50d6',appId:'1:496321113635:web:ec02384bffa7aeb37e0b96'};
 const CONTACT='privacy@yourdomain.com';
-let fbAuth=null,fbDb=null;const PAY={api:'',pack:{ksh:150,credits:30},cost:1};/* PAY.api = your deployed payment server URL (see functions-index.js). */try{if(window.firebase&&FB_CONFIG.apiKey!=='YOUR_API_KEY'){firebase.initializeApp(FB_CONFIG);fbAuth=firebase.auth();fbDb=firebase.firestore()}}catch(e){}
+let fbAuth=null,fbDb=null;const PAY={api:'https://oqptvdxnooyhkfszddsc.supabase.co/functions/v1/mpesa',pack:{ksh:150,credits:30},cost:1};/* PAY.api = your deployed payment server URL (see functions-index.js). */try{if(window.firebase&&FB_CONFIG.apiKey!=='YOUR_API_KEY'){firebase.initializeApp(FB_CONFIG);fbAuth=firebase.auth();fbDb=firebase.firestore()}}catch(e){}
 const KEY='lugha_v3',FEE=.15;
 const mpesa=(n,a,ph,ts)=>{const d=new Date(ts),c=Array.from({length:10},(_,i)=>i?'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.random()*32|0]:'Q').join('');return{code:c,msg:`${c} Confirmed. Ksh${a.toLocaleString()}.00 sent to ${n.toUpperCase()} ${ph.slice(0,4)}***${ph.slice(-3)} on ${d.toLocaleDateString('en-GB')} at ${d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})}. Paid by Lugha for your lessons.`}};
 const sp=(u,n,a,ph,h)=>({id:'seed'+h,u,amt:a,ph,st:'paid-out',ts:Date.now()-h*36e5,demo:1,...mpesa(n,a,ph,Date.now()-h*36e5)});
